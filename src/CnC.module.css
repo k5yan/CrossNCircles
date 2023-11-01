@@ -1,0 +1,119 @@
+.menu{
+	position: relative;
+	background-color: white;
+	color:blue;
+	font-size: 32px;
+	border: 2px solid black;
+	border-radius: 4px;
+	width: 378px;
+	height: 40px;
+	margin: 20px 0px 100px 100px;
+}
+
+.buttonRestart{
+	background-color: lightgreen;
+	color: black;
+	font-size: 24px;
+	position: absolute;
+	height: 40px;
+	width: 100px;
+	right: 0px;
+}
+
+.table{
+	position: relative;
+	align-items: center;
+	background-color: black;
+	height:378px;
+	width:378px;
+	display: flex;
+	flex-wrap: wrap;
+	margin: 50px 0px 0px 100px;
+}
+
+.symbolStyle{
+	margin: auto;
+	margin-top: 5px;
+}
+
+.winLine{
+	text-align: center;
+	color: white;
+	font-size: 14px;
+	position: absolute;
+	background-color: red;
+	width: 150%;
+	height: 10px;
+	z-index: 9;
+
+}
+
+.winLineC0{
+	transform: translateX(-94px) translateY(-126px);
+}
+
+.winLineC1{
+	transform: translateX(-94px);
+}
+
+.winLineC2{
+	transform: translateX(-94px) translateY(126px);
+}
+
+.winLineC3{
+	transform: translateX(-220px) rotate(90deg);
+}
+
+.winLineC4{
+	transform: translateX(-94px) rotate(90deg);
+}
+
+.winLineC5{
+	transform: translateX(32px) rotate(90deg);
+}
+
+.winLineC6{
+	transform: translateX(-94px) rotate(45deg);
+}
+
+.winLineC7{
+	transform: translateX(-94px) rotate(-45deg);
+}
+
+
+.defaultField{
+	position: relative;
+	background: white;
+	color: white;
+	display: inline-block;
+	flex-wrap: wrap;
+	height: 122px;
+	width: 122px;
+	margin: 2px;
+	z-index: 8;
+}
+
+.circleField{
+	background-color: cyan;
+	color: blue;
+	font-size: 68px;
+	display: flex;
+	flex-wrap: wrap;
+	height: 122px;
+	width: 122px;
+	margin: 2px;
+}
+
+.crossField{
+	background-color: orange;
+	color: black;
+	font-size: 68px;
+	display: flex;
+	flex-wrap: wrap;
+	height: 122px;
+	width: 122px;
+	margin: 2px;
+}
+
+
+
