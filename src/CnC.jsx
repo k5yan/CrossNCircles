@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { InterFaceMaker } from './Interface';
 import { checkGame } from './PlayGame';
+import { store } from './CreateStore';
 
 export const casesToWin = [
 	[1, 2, 3],
@@ -68,6 +69,23 @@ export const CrossesNCircles = () => {
 	const [Ofields, setOfields] = useState(``);
 	const [winCombo, setWinCombo] = useState(``);
 
+	store.dispatch({
+		type: 'SET_ALL_DATA',
+		payload: {
+			fields,
+			crossMove,
+			setCrossMove,
+			Xfields,
+			setXfields,
+			Ofields,
+			setOfields,
+			gameEnd,
+			setGameEnd,
+			winCombo,
+		},
+	});
+
+	console.log(store.getState({ fields }));
 	useEffect(() => {
 		switch (crossMove) {
 			case true:

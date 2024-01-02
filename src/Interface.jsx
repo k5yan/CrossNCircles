@@ -2,6 +2,7 @@ import styles from './CnC.module.css';
 import { GameInfo } from './GameInfo';
 import { PlayGame } from './PlayGame';
 import { WinLine } from './winLinePos';
+import { store } from './CreateStore';
 
 export const InterFaceMaker = (
 	fields,
@@ -15,6 +16,19 @@ export const InterFaceMaker = (
 	setGameEnd,
 	winCombo,
 ) => {
+	// const {
+	// 	fields,
+	// 	crossMove,
+	// 	setCrossMove,
+	// 	Xfields,
+	// 	setXfields,
+	// 	Ofields,
+	// 	setOfields,
+	// 	gameEnd,
+	// 	setGameEnd,
+	// 	winCombo,
+	// } = store.getState();
+
 	const PlayProps = [
 		fields,
 		crossMove,
