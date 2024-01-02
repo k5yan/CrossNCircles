@@ -1,6 +1,9 @@
 import styles from './CnC.module.css';
+import { store } from './CreateStore';
 
-export const WinLine = (props) => {
+export const WinLine = () => {
+	const { gameEnd, winCombo } = store.getState();
+
 	const linePoses = [
 		`winLineC0`,
 		`winLineC1`,
@@ -15,8 +18,8 @@ export const WinLine = (props) => {
 	return (
 		<>
 			<div
-				hidden={!props.gameEnd}
-				className={`${styles.winLine} ${styles[linePoses[props.winCombo]]}`}
+				hidden={!gameEnd}
+				className={`${styles.winLine} ${styles[linePoses[winCombo]]}`}
 			></div>
 		</>
 	);

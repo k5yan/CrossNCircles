@@ -1,6 +1,6 @@
 const initialState = {};
 
-export const appReducer = (action) => {
+export const appReducer = (state = initialState, action) => {
 	const { type, payload } = action || {};
 
 	switch (type) {

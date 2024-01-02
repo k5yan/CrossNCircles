@@ -1,20 +1,31 @@
 import styles from './CnC.module.css';
-export const GameInfo = (props) => {
+import { store } from './CreateStore';
+export const GameInfo = () => {
+	const {
+		gameEnd,
+		setGameEnd,
+		setXfields,
+		setOfields,
+		crossMove,
+		setCrossMove,
+		fields,
+	} = store.getState();
+
 	const restartGame = () => {
-		props.setCrossMove(true);
-		props.setXfields(``);
-		props.setOfields(``);
-		props.setGameEnd(false);
-		props.fields.forEach((field) => {
+		setCrossMove(true);
+		setXfields(``);
+		setOfields(``);
+		setGameEnd(false);
+		fields.forEach((field) => {
 			field.className = `defaultField`;
 		});
 	};
 
 	return (
 		<div>
-			<div hidden={!props.gameEnd}>
-				<p hidden={!props.gameEnd} className={styles.menu}>
-					Win: {props.crossMove ? `o` : `x`}
+			<div hidden={!gameEnd}>
+				<p hidden={!gameEnd} className={styles.menu}>
+					Win: {crossMove ? `o` : `x`}
 					<button
 						className={styles.buttonRestart}
 						onClick={() => {
@@ -26,9 +37,9 @@ export const GameInfo = (props) => {
 				</p>
 			</div>
 
-			<div hidden={props.gameEnd}>
+			<div hidden={gameEnd}>
 				<p className={styles.menu}>
-					play: {props.crossMove ? `x` : `o`}
+					play: {crossMove ? `x` : `o`}
 					<button
 						className={styles.buttonRestart}
 						onClick={() => {

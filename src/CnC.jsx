@@ -85,7 +85,6 @@ export const CrossesNCircles = () => {
 		},
 	});
 
-	console.log(store.getState({ fields }));
 	useEffect(() => {
 		switch (crossMove) {
 			case true:
@@ -102,16 +101,5 @@ export const CrossesNCircles = () => {
 		}
 	}, [crossMove, gameEnd, Xfields, Ofields]);
 
-	return InterFaceMaker(
-		fields,
-		crossMove,
-		setCrossMove,
-		Xfields,
-		setXfields,
-		Ofields,
-		setOfields,
-		gameEnd,
-		setGameEnd,
-		winCombo,
-	);
+	return InterFaceMaker();
 };

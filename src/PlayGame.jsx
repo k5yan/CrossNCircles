@@ -1,19 +1,20 @@
 import { casesToWin } from './CnC';
+import { store } from './CreateStore';
+export const PlayGame = (id) => {
+	const {
+		fields,
+		crossMove,
+		setCrossMove,
+		Xfields,
+		setXfields,
+		Ofields,
+		setOfields,
+		gameEnd,
+	} = store.getState();
 
-export const PlayGame = (
-	id,
-	fields,
-	crossMove,
-	setCrossMove,
-	Xfields,
-	setXfields,
-	Ofields,
-	setOfields,
-	gameEnd,
-) => {
 	if (gameEnd !== true) {
-		const currentField = fields.find((pole) => {
-			return pole.id === id;
+		const currentField = fields.find((field) => {
+			return field.id === id;
 		});
 		if (currentField.className === `defaultField`) {
 			switch (crossMove) {
@@ -38,14 +39,13 @@ export const checkGame = (fields, setWinCombo) => {
 	let fieldsWin = 0;
 	let win = false;
 	casesToWin.forEach((combo, id) => {
-		//добавь линию победы!
 		fieldsWin = 0;
 		combo.forEach((cage) => {
 			if (fields.includes(cage)) {
 				fieldsWin++;
 			}
 			if (fieldsWin === 3) {
-				console.log(`______X WIN !!!!_____`);
+				console.log(`______WIN !!!!_____`);
 				win = true;
 				setWinCombo(id);
 			}
