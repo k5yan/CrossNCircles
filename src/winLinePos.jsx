@@ -1,5 +1,6 @@
+import { useSelector } from 'react-redux';
 import styles from './CnC.module.css';
-import { store } from './CreateStore';
+import { store } from './Store';
 
 export const WinLine = () => {
 	const { gameEnd, winCombo } = store.getState();

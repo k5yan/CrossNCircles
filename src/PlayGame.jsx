@@ -1,5 +1,7 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { casesToWin } from './CnC';
-import { store } from './CreateStore';
+import { store } from './Store';
+
 export const PlayGame = (id) => {
 	const {
 		fields,
@@ -11,6 +13,16 @@ export const PlayGame = (id) => {
 		setOfields,
 		gameEnd,
 	} = store.getState();
+	// const dispatch = useDispatch();
+	console.log(useSelector((state) => state.fields)); //здесь баг
+	// const fields = useSelector((state) => state.fields);
+	// const crossMove = useSelector((state) => state.crossMove);
+	// const setCrossMove = useSelector((state) => state.setCrossMove);
+	// const Xfields = useSelector((state) => state.Xfields);
+	// const setXfields = useSelector((state) => state.setXfields);
+	// const Ofields = useSelector((state) => state.Ofields);
+	// const setOfields = useSelector((state) => state.setOfields);
+	// const gameEnd = useSelector((state) => state.gameEnd);
 
 	if (gameEnd !== true) {
 		const currentField = fields.find((field) => {
@@ -21,11 +33,13 @@ export const PlayGame = (id) => {
 				case true:
 					currentField.className = `crossField`;
 					currentField.symbol = `x`;
+					// dispatch({type: `SET_X_FIELDS`, payload: currentField.id});
 					setXfields(Xfields + currentField.id);
 					break;
 				case false:
 					currentField.className = `circleField`;
 					currentField.symbol = `o`;
+					// dispatch({type: `SET_O_FIELDS`, payload: currentField.id});
 					setOfields(Ofields + currentField.id);
 					break;
 				default:

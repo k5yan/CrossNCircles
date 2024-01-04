@@ -1,6 +1,4 @@
-import { appReducer } from './reducer';
-
-const CreateStore = (reducer) => {
+export const CreateStore = (reducer) => {
 	let store;
 
 	return {
@@ -10,6 +8,3 @@ const CreateStore = (reducer) => {
 		getState: () => store,
 	};
 };
-
-export const store = CreateStore(appReducer);
-store.dispatch({});

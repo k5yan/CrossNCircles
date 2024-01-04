@@ -2,10 +2,11 @@ import styles from './CnC.module.css';
 import { GameInfo } from './GameInfo';
 import { PlayGame } from './PlayGame';
 import { WinLine } from './winLinePos';
-import { store } from './CreateStore';
+import { store } from './Store';
+import { useSelector, useStore } from 'react-redux';
 
 export const InterFaceMaker = () => {
-	const { fields } = store.getState();
+	const fields = useSelector((state) => state.fields);
 
 	return (
 		<>
