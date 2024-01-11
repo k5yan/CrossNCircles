@@ -12,9 +12,19 @@ export const appReducer = (state = initialState, action) => {
 			break;
 		}
 		case 'SET_O_FIELDS': {
-			state.setOfields(state.Xfields + payload);
+			state.setOfields(state.Ofields + payload);
+			break;
+		}
+		case 'SET_CROSSMOVE': {
+			state.setCrossMove((prevMove) => !prevMove);
+			break;
+		}
+		case 'SET_GAME_END': {
+			state.setGameEnd(payload);
 			break;
 		}
 		default:
 	}
+	//после заполнения поля, оно остается кликабельным
+	//смотри, как заблокировал поля после завершения игры
 };

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { InterFaceMaker } from './Interface';
 import { checkGame } from './PlayGame';
-import { store } from './Store';
 import { useDispatch } from 'react-redux';
 
 export const casesToWin = [
@@ -70,23 +69,8 @@ export const CrossesNCircles = () => {
 	const [Ofields, setOfields] = useState(``);
 	const [winCombo, setWinCombo] = useState(``);
 	const dispatch = useDispatch();
-	dispatch({
-		type: 'SET_ALL_DATA',
-		payload: {
-			fields,
-			crossMove,
-			setCrossMove,
-			Xfields,
-			setXfields,
-			Ofields,
-			setOfields,
-			gameEnd,
-			setGameEnd,
-			winCombo,
-		},
-	});
 
-	store.dispatch({
+	dispatch({
 		type: 'SET_ALL_DATA',
 		payload: {
 			fields,

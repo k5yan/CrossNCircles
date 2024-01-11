@@ -1,13 +1,13 @@
 import styles from './CnC.module.css';
 import { GameInfo } from './GameInfo';
-import { PlayGame } from './PlayGame';
+import { usePlayGame } from './hooks/usePlayGame';
 import { WinLine } from './winLinePos';
-import { store } from './Store';
-import { useSelector, useStore } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectFields } from './selectors/select-fields';
 
 export const InterFaceMaker = () => {
-	const fields = useSelector((state) => state.fields);
-
+	const fields = useSelector(selectFields);
+	const play = usePlayGame();
 	return (
 		<>
 			<div className={styles.main}>
@@ -19,7 +19,9 @@ export const InterFaceMaker = () => {
 							<div
 								key={id}
 								className={styles[`${className}`]}
-								onClick={() => PlayGame(id)}
+								onClick={() => {
+									play(id);
+								}}
 							>
 								<p className={styles.symbolStyle}>{symbol}</p>
 							</div>

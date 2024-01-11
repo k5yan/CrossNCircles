@@ -1,31 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './CnC.module.css';
-import { store } from './Store';
 
 export const GameInfo = () => {
-	const {
-		gameEnd,
-		setGameEnd,
-		setXfields,
-		setOfields,
-		crossMove,
-		setCrossMove,
-		fields,
-	} = store.getState();
-
-	// const gameEnd = useSelector((state) => state.gameEnd);
-	// const setGameEnd = useSelector((state) => state.setGameEnd);
-	// const setXfields = useSelector((state) => state.setXfields);
-	// const setOfields = useSelector((state) => state.setOfields);
-	// const crossMove = useSelector((state) => state.crossMove);
-	// const setCrossMove = useSelector((state) => state.setCrossMove);
-	// const fields = useSelector((state) => state.fields);
+	const dispatch = useDispatch();
+	const crossMove = useSelector((state) => state.crossMove);
+	const setCrossMove = useSelector((state) => state.setCrossMove);
+	const fields = useSelector((state) => state.fields);
+	const gameEnd = useSelector((state) => state.gameEnd);
 
 	const restartGame = () => {
 		setCrossMove(true);
-		setXfields(``);
-		setOfields(``);
-		setGameEnd(false);
+		dispatch({ type: `SET_X_FIELDS`, payload: `` });
+		dispatch({ type: `SET_O_FIELDS`, payload: `` });
+		dispatch({ type: `SET_GAME_END`, payload: false });
 		fields.forEach((field) => {
 			field.className = `defaultField`;
 		});
