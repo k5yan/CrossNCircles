@@ -1,22 +1,21 @@
-import { useDispatch, useSelector } from 'react-redux';
 import styles from './CnC.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCrossMove, selectGameEnd } from './selectors';
 
 export const GameInfo = () => {
+	const crossMove = useSelector(selectCrossMove);
+	const gameEnd = useSelector(selectGameEnd);
 	const dispatch = useDispatch();
-	const crossMove = useSelector((state) => state.crossMove);
-	const setCrossMove = useSelector((state) => state.setCrossMove);
-	const fields = useSelector((state) => state.fields);
-	const gameEnd = useSelector((state) => state.gameEnd);
 
-	const restartGame = () => {
-		setCrossMove(true);
-		dispatch({ type: `SET_X_FIELDS`, payload: `` });
-		dispatch({ type: `SET_O_FIELDS`, payload: `` });
-		dispatch({ type: `SET_GAME_END`, payload: false });
-		fields.forEach((field) => {
-			field.className = `defaultField`;
-		});
-	};
+	// const restartGame = () => {
+	// 	setCrossMove(true);
+	// 	dispatch({ type: `SET_X_FIELDS`, payload: `` });
+	// 	dispatch({ type: `SET_O_FIELDS`, payload: `` });
+	// 	dispatch({ type: `SET_GAME_END`, payload: false });
+	// 	fields.forEach((field) => {
+	// 		field.className = `defaultField`;
+	// 	});
+	// };
 
 	return (
 		<div>
@@ -26,7 +25,7 @@ export const GameInfo = () => {
 					<button
 						className={styles.buttonRestart}
 						onClick={() => {
-							restartGame();
+							dispatch({ type: 'RESTART_GAME' });
 						}}
 					>
 						restart
@@ -40,7 +39,7 @@ export const GameInfo = () => {
 					<button
 						className={styles.buttonRestart}
 						onClick={() => {
-							restartGame();
+							dispatch({ type: 'RESTART_GAME' });
 						}}
 					>
 						restart

@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
-import { InterFaceMaker } from './Interface';
-import { checkGame } from './PlayGame';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { InterfaceMaker } from './InterfaceMaker';
+import { useCheckGame } from './hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCrossMove, selectGameEnd, selectXfields } from './selectors';
 
 export const casesToWin = [
 	[1, 2, 3],
@@ -14,93 +15,43 @@ export const casesToWin = [
 	[3, 5, 7],
 ];
 
-const fields = [
-	{
-		id: 1,
-		symbol: ` `,
-		className: `defaultField`,
-	},
-	{
-		id: 2,
-		symbol: ` `,
-		className: `defaultField`,
-	},
-	{
-		id: 3,
-		symbol: ` `,
-		className: `defaultField`,
-	},
-	{
-		id: 4,
-		symbol: ` `,
-		className: `defaultField`,
-	},
-	{
-		id: 5,
-		symbol: ` `,
-		className: `defaultField`,
-	},
-	{
-		id: 6,
-		symbol: ` `,
-		className: `defaultField`,
-	},
-	{
-		id: 7,
-		symbol: ``,
-		className: `defaultField`,
-	},
-	{
-		id: 8,
-		symbol: ` `,
-		className: `defaultField`,
-	},
-	{
-		id: 9,
-		symbol: ` `,
-		className: `defaultField`,
-	},
-];
-
 export const CrossesNCircles = () => {
-	const [gameEnd, setGameEnd] = useState(false);
-	const [crossMove, setCrossMove] = useState(true);
-	const [Xfields, setXfields] = useState(``);
-	const [Ofields, setOfields] = useState(``);
-	const [winCombo, setWinCombo] = useState(``);
+	// const [gameEnd, setGameEnd] = useState(false);
+	// const [crossMove, setCrossMove] = useState(true);
+	// const [Xfields, setXfields] = useState(``);
+	// const [Ofields, setOfields] = useState(``);
+	// const [winCombo, setWinCombo] = useState(``);
+	// const dispatch = useDispatch();
+
+	// dispatch({
+	// 	type: 'SET_ALL_DATA',
+	// 	payload: {
+	// 		fields,
+	// 		crossMove,
+	// 		setCrossMove,
+	// 		Xfields,
+	// 		setXfields,
+	// 		Ofields,
+	// 		setOfields,
+	// 		gameEnd,
+	// 		setGameEnd,
+	// 		winCombo,
+	// 	},
+	// });
+
 	const dispatch = useDispatch();
-
-	dispatch({
-		type: 'SET_ALL_DATA',
-		payload: {
-			fields,
-			crossMove,
-			setCrossMove,
-			Xfields,
-			setXfields,
-			Ofields,
-			setOfields,
-			gameEnd,
-			setGameEnd,
-			winCombo,
-		},
-	});
-
+	dispatch({ type: 'RESTART_GAME' });
+	const crossMove = useSelector(selectCrossMove);
+	const gameEnd = useSelector(selectGameEnd);
+	const CheckGame = useCheckGame();
 	useEffect(() => {
-		switch (crossMove) {
-			case true:
-				if (gameEnd !== true) {
-					setGameEnd(checkGame(Ofields, setWinCombo));
-				}
-				break;
-			case false:
-				if (gameEnd !== true) {
-					setGameEnd(checkGame(Xfields, setWinCombo));
-				}
-				break;
-			default:
+		if (gameEnd !== true) {
+			const gameOver = CheckGame();
+			if (gameOver) {
+				dispatch({ type: 'GAME_END' });
+			}
 		}
-	}, [crossMove, gameEnd, Xfields, Ofields]);
+	}, [crossMove, gameEnd, dispatch, CheckGame]);
 
-	return InterFaceMaker();
+	return InterfaceMaker();
 };

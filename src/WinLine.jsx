@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import styles from './CnC.module.css';
+import { selectGameEnd, selectWinCombo } from './selectors';
 
 export const WinLine = () => {
-	//const { gameEnd, winCombo } = store.getState();
-	const gameEnd = useSelector((state) => state.gameEnd);
-	const winCombo = useSelector((state) => state.winCombo);
+	const gameEnd = useSelector(selectGameEnd);
+	const winCombo = useSelector(selectWinCombo);
 
 	const linePoses = [
 		`winLineC0`,

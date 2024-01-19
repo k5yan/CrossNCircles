@@ -1,11 +1,11 @@
 import styles from './CnC.module.css';
 import { GameInfo } from './GameInfo';
 import { usePlayGame } from './hooks/usePlayGame';
-import { WinLine } from './winLinePos';
+import { WinLine } from './WinLine';
 import { useSelector } from 'react-redux';
 import { selectFields } from './selectors/select-fields';
 
-export const InterFaceMaker = () => {
+export const InterfaceMaker = () => {
 	const fields = useSelector(selectFields);
 	const play = usePlayGame();
 	return (
