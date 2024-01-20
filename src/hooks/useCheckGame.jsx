@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { casesToWin } from '../CnC/CnC';
-import { selectXfields, selectOfields } from '../selectors';
-import { selectCrossMove } from '../selectors';
+import { casesToWin } from '../constants';
+import { selectXfields, selectOfields, selectCrossMove } from '../selectors';
+import { SET_WIN_COMBINATION } from '../actions';
 
 export const useCheckGame = () => {
 	const dispatch = useDispatch();
-	let fieldsWin = 0;
-	let win = false;
 	const crossMove = useSelector(selectCrossMove);
 	const Xfields = useSelector(selectXfields);
 	const Ofields = useSelector(selectOfields);
-	const fields = crossMove ? Xfields : Ofields;
+	const fields = crossMove ? Ofields : Xfields;
+	let fieldsWin = 0;
+	let win = false;
+
 	const checking = () => {
 		casesToWin.forEach((combo, id) => {
 			fieldsWin = 0;
@@ -19,13 +20,13 @@ export const useCheckGame = () => {
 					fieldsWin++;
 				}
 				if (fieldsWin === 3) {
-					console.log(`______WIN !!!!_____`);
 					win = true;
-					dispatch({ type: 'SET_WIN_COMBINATION', payload: id });
+					dispatch(SET_WIN_COMBINATION(id));
 				}
 			});
 		});
 		return win;
 	};
+
 	return checking;
 };

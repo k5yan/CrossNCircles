@@ -31,7 +31,7 @@ export const fields = [
 	},
 	{
 		id: 7,
-		symbol: ``,
+		symbol: ` `,
 		className: `defaultField`,
 	},
 	{

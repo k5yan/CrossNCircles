@@ -1,5 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCrossMove, selectFields, selectGameEnd } from '../selectors';
+import {
+	SET_O_FIELDS,
+	SET_X_FIELDS,
+	SET_FIELD_STATUS,
+	CHANGE_WHO_PLAYING,
+} from '../actions';
+import { OFIELD, XFIELD } from '../constants';
 
 export const usePlayGame = () => {
 	let fields = useSelector(selectFields);
@@ -15,25 +22,21 @@ export const usePlayGame = () => {
 			if (currentField.className === `defaultField`) {
 				switch (crossMove) {
 					case true:
-						currentField.className = `crossField`;
-						currentField.symbol = `x`;
-						fields[id - 1] = currentField;
-						dispatch({ type: 'SET_FIELD_STATUS', payload: fields }); ////
-						dispatch({ type: `SET_X_FIELDS`, payload: currentField.id });
+						fields[id - 1] = XFIELD(id); ///
+						dispatch(SET_FIELD_STATUS(fields));
+						dispatch(SET_X_FIELDS(id));
 						break;
 					case false:
-						currentField.className = `circleField`;
-						currentField.symbol = `o`;
-						dispatch({ type: `SET_O_FIELDS`, payload: currentField.id });
+						fields[id - 1] = OFIELD(id);
+						dispatch(SET_FIELD_STATUS(fields));
+						dispatch(SET_O_FIELDS(id));
 						break;
 					default:
 				}
+				dispatch(CHANGE_WHO_PLAYING);
 			}
-			dispatch({ type: 'CHANGE_WHO_PLAYING', payload: !crossMove });
 		}
 	};
-	console.log(useSelector(selectFields));
-	console.log(useSelector(selectCrossMove));
 
 	return playing;
 };
