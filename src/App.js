@@ -1,12 +1,8 @@
-import { CrossesNCircles } from './CnC';
-import { Provider } from 'react-redux';
-import { store } from './redux-store';
+import { CrossesNCircles } from './CnC/CnC';
 export function App() {
 	return (
 		<div className="App">
-			<Provider store={store}>
-				<CrossesNCircles />
-			</Provider>
+			<CrossesNCircles />
 		</div>
 	);
 }

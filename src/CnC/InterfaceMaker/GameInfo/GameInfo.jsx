@@ -1,6 +1,6 @@
-import styles from './CnC.module.css';
+import styles from '../../../styles/CnC.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCrossMove, selectGameEnd } from './selectors';
+import { selectCrossMove, selectGameEnd } from '../../../selectors';
 
 export const GameInfo = () => {
 	const crossMove = useSelector(selectCrossMove);

@@ -17,7 +17,7 @@ export const usePlayGame = () => {
 					case true:
 						currentField.className = `crossField`;
 						currentField.symbol = `x`;
-						fields[id] = currentField;
+						fields[id - 1] = currentField;
 						dispatch({ type: 'SET_FIELD_STATUS', payload: fields }); ////
 						dispatch({ type: `SET_X_FIELDS`, payload: currentField.id });
 						break;
@@ -29,8 +29,11 @@ export const usePlayGame = () => {
 					default:
 				}
 			}
-			dispatch({ type: 'CHANGE_WHO_PLAYING' });
+			dispatch({ type: 'CHANGE_WHO_PLAYING', payload: !crossMove });
 		}
 	};
+	console.log(useSelector(selectFields));
+	console.log(useSelector(selectCrossMove));
+
 	return playing;
 };

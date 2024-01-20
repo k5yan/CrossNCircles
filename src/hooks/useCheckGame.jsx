@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { casesToWin } from '../CnC';
+import { casesToWin } from '../CnC/CnC';
 import { selectXfields, selectOfields } from '../selectors';
 import { selectCrossMove } from '../selectors';
 

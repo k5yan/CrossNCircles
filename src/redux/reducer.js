@@ -1,4 +1,4 @@
-import { fields } from './fields/fields';
+import { fields } from '../fields/fields';
 const initialState = {
 	fields: fields,
 	crossMove: true,
@@ -24,7 +24,7 @@ export const appReducer = (state = initialState, action) => {
 		case 'CHANGE_WHO_PLAYING':
 			return {
 				...state,
-				crossMove: !state.crossMove,
+				crossMove: payload, ///
 			};
 		case 'SET_X_FIELDS':
 			return {

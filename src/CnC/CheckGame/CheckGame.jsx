@@ -1,4 +1,4 @@
-import { casesToWin } from './CnC';
+import { casesToWin } from '../CnC';
 
 export const CheckGame = (fields) => {
 	let fieldsWin = 0;

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import styles from './CnC.module.css';
-import { selectGameEnd, selectWinCombo } from './selectors';
+import styles from '../../../styles/CnC.module.css';
+import { selectGameEnd, selectWinCombo } from '../../../selectors';
 
 export const WinLine = () => {
 	const gameEnd = useSelector(selectGameEnd);

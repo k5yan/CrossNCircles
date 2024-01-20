@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { InterfaceMaker } from './InterfaceMaker';
-import { useCheckGame } from './hooks';
+import { InterfaceMaker } from './InterfaceMaker/InterfaceMaker';
+import { useCheckGame } from '../hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCrossMove, selectGameEnd, selectXfields } from './selectors';
+import { selectCrossMove, selectGameEnd } from '../selectors';
 
 export const casesToWin = [
 	[1, 2, 3],
