@@ -20,7 +20,7 @@ export const WinLine = () => {
 	return (
 		<>
 			<div
-				hidden={!gameEnd}
+				hidden={gameEnd !== 1}
 				className={`${styles.winLine} ${styles[linePoses[winCombo]]}`}
 			></div>
 		</>

@@ -15,14 +15,14 @@ export const usePlayGame = () => {
 	const dispatch = useDispatch();
 
 	const playing = (id) => {
-		if (gameEnd !== true) {
+		if (gameEnd === 3) {
 			const currentField = fields.find((field) => {
 				return field.id === id;
 			});
 			if (currentField.className === `defaultField`) {
 				switch (crossMove) {
 					case true:
-						fields[id - 1] = XFIELD(id); ///
+						fields[id - 1] = XFIELD(id);
 						dispatch(SET_FIELD_STATUS(fields));
 						dispatch(SET_X_FIELDS(id));
 						break;

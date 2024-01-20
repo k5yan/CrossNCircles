@@ -5,8 +5,8 @@ const initialState = {
 	crossMove: true,
 	Xfields: ``,
 	Ofields: ``,
-	gameEnd: false,
-	winCombo: ``, ///доделать ничью
+	gameEnd: 3,
+	winCombo: ``,
 };
 
 export const appReducer = (state = initialState, { type, payload }) => {
@@ -48,7 +48,7 @@ export const appReducer = (state = initialState, { type, payload }) => {
 		case 'GAME_END':
 			return {
 				...state,
-				gameEnd: true,
+				gameEnd: payload,
 			};
 		default:
 			return state;

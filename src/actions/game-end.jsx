@@ -1,1 +1,1 @@
-export const GAME_END = { type: 'GAME_END' };
+export const GAME_END = (number) => ({ type: 'GAME_END', payload: number });

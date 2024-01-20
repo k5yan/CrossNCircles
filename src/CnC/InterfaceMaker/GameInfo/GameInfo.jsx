@@ -7,25 +7,16 @@ export const GameInfo = () => {
 	const crossMove = useSelector(selectCrossMove);
 	const gameEnd = useSelector(selectGameEnd);
 	const dispatch = useDispatch();
+	const nowPlaying = {
+		1: `Win: ${crossMove ? `o` : `x`}`,
+		2: `Draw`,
+		3: `Play: ${crossMove ? `o` : `x`}`,
+	};
 	return (
 		<div>
-			<div hidden={!gameEnd}>
+			<div>
 				<p className={styles.menu}>
-					Win: {crossMove ? `o` : `x`}
-					<button
-						className={styles.buttonRestart}
-						onClick={() => {
-							dispatch(RESTART_GAME);
-						}}
-					>
-						restart
-					</button>
-				</p>
-			</div>
-
-			<div hidden={gameEnd}>
-				<p className={styles.menu}>
-					play: {crossMove ? `x` : `o`}
+					{nowPlaying[gameEnd]}
 					<button
 						className={styles.buttonRestart}
 						onClick={() => {
